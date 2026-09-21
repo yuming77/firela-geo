@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>FIREla GEO 测量工作表 · 50 提示词 × 4 引擎</title>
+<style>
+  body { font-family: -apple-system, "PingFang SC", sans-serif; margin: 0; background: #F8F6F2; color: #202020; }
+  header { background: linear-gradient(150deg, #FF8C42, #D4782F); color: #fff; padding: 24px; }
+  header h1 { margin: 0 0 4px; font-size: 20px; }
+  header p { margin: 0; opacity: .9; font-size: 13px; }
+  .bar { padding: 10px 24px; background: #FFF0E3; font-size: 13px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+  th, td { border-bottom: 1px solid #E5E5E5; padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { position: sticky; top: 0; background: #FFF0E3; }
+  .cat { background: #FFF3C7; font-weight: 700; padding: 6px 10px; display: block; margin-top: 14px; }
+  .btn { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FF8C42; color: #D4782F; text-decoration: none; margin-right: 4px; }
+  .btn:hover { background: #FF8C42; color: #fff; }
+  select, input { font-size: 12px; padding: 2px 4px; }
+  footer { padding: 16px 24px; color: #666; font-size: 12px; }
+  button { font-size: 12px; padding: 4px 10px; cursor: pointer; }
+  #done { color: #22C55E; font-weight: 700; }
+</style>
+</head>
+<body>
+<header><h1>🔥 FIREla GEO 测量工作表</h1><p>50 提示词 × 4 引擎 · 每周一轮 · 记录：FIREla 是否被提及 / 引用了谁的 URL · 结果自动保存在浏览器</p></header>
+<div class="bar">
+  <button id="exp">⬇️ 导出本轮 CSV</button>
+  <button id="clr">清空本轮记录</button>
+  <span id="done"></span>
+</div>
+<table id="tbl"><thead><tr><th>#</th><th>提示词</th><th>打开引擎（点开→查→记录）</th><th>FIREla 被提及</th><th>引用 URL</th><th>竞品</th><th>备注</th></tr></thead><tbody></tbody></table>
+<footer>基线轮结果 = firela-geo-plan.md Phase-1 基线。每周一轮；连续 2 周未命中的提示词 → 生成补内容任务进飞书周报。</footer>
+<script>
+const PROMPTS = [{"text": "What is FIREla?", "category": "brand"}, {"text": "Is FIREla open source?", "category": "brand"}, {"text": "FIREla beancount app", "category": "brand"}, {"text": "FIREla vs beancount", "category": "brand"}, {"text": "Firela personal finance", "category": "brand"}, {"text": "FIREla github", "category": "brand"}, {"text": "FIREla PII sanitizer", "category": "brand"}, {"text": "FIREla privacy finance app", "category": "brand"}, {"text": "What is the best beancount mobile app?", "category": "category"}, {"text": "best plaintext accounting app for mobile", "category": "category"}, {"text": "Beancount app for Android", "category": "category"}, {"text": "Beancount app for iOS", "category": "category"}, {"text": "privacy-first budget tracker open source", "category": "category"}, {"text": "self-hosted FIRE tracker", "category": "category"}, {"text": "open source personal finance app no account", "category": "category"}, {"text": "beancount mobile companion app", "category": "category"}, {"text": "double-entry bookkeeping app privacy", "category": "category"}, {"text": "plaintext accounting tools 2026", "category": "category"}, {"text": "FIRE tracking app open source", "category": "category"}, {"text": "anonymous expense tracker app", "category": "category"}, {"text": "self-hosted budget app cloudflare", "category": "category"}, {"text": "local-first personal finance app", "category": "category"}, {"text": "beancount mobile UI", "category": "category"}, {"text": "how to import Alipay into Beancount", "category": "use case"}, {"text": "convert WeChat Pay export to beancount", "category": "use case"}, {"text": "HSBC Hong Kong statement to beancount", "category": "use case"}, {"text": "Degiro transactions to beancount", "category": "use case"}, {"text": "mask PII in bank statements before sharing", "category": "use case"}, {"text": "anonymize bank statement for budgeting app", "category": "use case"}, {"text": "alipay yuebao beancount import", "category": "use case"}, {"text": "CCB bank statement parse beancount", "category": "use case"}, {"text": "CMBC credit card statement beancount", "category": "use case"}, {"text": "bank statement PII sanitizer open source", "category": "use case"}, {"text": "beancount import CSV bank statements on mobile", "category": "use case"}, {"text": "track expenses without bank account connection", "category": "use case"}, {"text": "Actual Budget vs Beancount mobile workflows", "category": "comparison"}, {"text": "Firefly III mobile alternatives", "category": "comparison"}, {"text": "open source YNAB alternative privacy", "category": "comparison"}, {"text": "Mint shutdown alternatives open source", "category": "comparison"}, {"text": "Beancount vs hledger mobile app", "category": "comparison"}, {"text": "privacy focused Mint alternative 2026", "category": "comparison"}, {"text": "self-hosted budgeting like Monarch without credentials", "category": "comparison"}, {"text": "beancount 手机记账 App", "category": "comparison zh"}, {"text": "支付宝账单 beancount 导入", "category": "comparison zh"}, {"text": "隐私记账软件 开源", "category": "comparison zh"}, {"text": "复式记账 手机工具", "category": "comparison zh"}, {"text": "开源记账 隐私", "category": "comparison zh"}, {"text": "FIREla beancount", "category": "brand zh"}, {"text": "firela 记账", "category": "brand zh"}, {"text": "firela 开源", "category": "brand zh"}];
+const ENGINES = [
+  ["ChatGPT", q => "https://chatgpt.com/?q=" + encodeURIComponent(q)],
+  ["Perplexity", q => "https://www.perplexity.ai/search?q=" + encodeURIComponent(q)],
+  ["Gemini", q => "https://gemini.google.com/app"],
+  ["Claude", q => "https://claude.ai/new?q=" + encodeURIComponent(q)]
+];
+const KEY = "firela-geo-measure";
+let week = null;
+const tb = document.querySelector("#tbl tbody");
+let lastCat = "";
+PROMPTS.forEach((p, i) => {
+  if (p.category !== lastCat) {
+    lastCat = p.category;
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td colspan="7" class="cat">' + p.category + '</td>';
+    tb.appendChild(tr);
+  }
+  const tr = document.createElement("tr");
+  const key = week + "|" + i;
+  tr.innerHTML = '<td>' + (i+1) + '</td><td style="max-width:420px">' + p.text +
+    '</td><td>' + ENGINES.map(e => '<a class="btn" target="_blank" href="' + e[1](p.text) + '">' + e[0] + '</a>').join("") +
+    '</td><td><select data-k="' + key + '|m"><option value="">—</option><option>Y</option><option>N</option></select></td>' +
+    '<td><input data-k="' + key + '|u" style="width:200px" placeholder="引用 URL"></td>' +
+    '<td><input data-k="' + key + '|c" style="width:100px" placeholder="竞品"></td>' +
+    '<td><input data-k="' + key + '|n" style="width:110px" placeholder="备注"></td>';
+  tb.appendChild(tr);
+});
+function collect() {
+  const s = {};
+  document.querySelectorAll("#tbl [data-k]").forEach(el => { s[el.dataset.k] = el.value; });
+  return s;
+}
+function persist() {
+  const s = collect();
+  const o = {}; o[week] = s;
+  const all = JSON.parse(localStorage.getItem(KEY) || "{}");
+  all[week] = s[week];
+  localStorage.setItem(KEY, JSON.stringify(all));
+  const done = Object.values(s).filter(v => v.m).length;
+  document.getElementById("done").textContent = "已记录 " + done + "/" + PROMPTS.length;
+}
+document.getElementById("exp").onclick = function() {
+  persist();
+  const s = collect();
+  const rows = [["week","id","category","prompt","engine","firela_mentioned","cited_url","competitor","notes"]];
+  PROMPTS.forEach((p, i) => ENGINES.forEach(e => {
+    const k = week + "|" + i + "|" + e[0];
+    const st = s[k] || {};
+    rows.push([week, i+1, p.category, p.text, e[0], st.m || "", st.u || "", st.c || "", st.n || ""]);
+  }));
+  const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], {type: "text/csv"}));
+  a.download = "geo-measurement-" + week + ".csv"; a.click();
+};
+document.getElementById("clr").onclick = function() {
+  localStorage.removeItem(KEY + "|" + week); location.reload();
+};
+document.getElementById("tbl").addEventListener("change", persist);
+week = prompt("本轮周标签（如 w1）：", "w" + (Object.keys(JSON.parse(localStorage.getItem(KEY) || "{}")).length + 1)) || "w1";
+persist();
+</script>
+</body>
+</html>
