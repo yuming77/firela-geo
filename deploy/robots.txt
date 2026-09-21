@@ -1,0 +1,60 @@
+# FIREla 站点 robots.txt 建议配置
+# 目标：放行搜索用途与引用用途的 AI 爬虫（GEO 核心）；
+# 训练用途爬虫由团队按策略决定（默认放行，如需限制见文末注释）。
+# 部署位置：https://firela.io/robots.txt 与 https://docs.firela.io/robots.txt
+
+# ── 搜索/引用用途 AI 爬虫（GEO 目标，全部放行）──
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# ── 传统搜索引擎 ──
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ── 其他爬虫 ──
+User-agent: *
+Allow: /
+
+Sitemap: https://firela.io/sitemap.xml
+
+# ── 备注 ──
+# 1. 若担心训练用途占用带宽，可单独屏蔽训练爬虫（ClaudeBot/GPTBot 亦用于训练），
+#    保留 OAI-SearchBot / Claude-SearchBot / PerplexityBot（搜索引用用途，GEO 关键）。
+# 2. docs.firela.io 若为独立部署（如 Mintlify），robots/llms.txt 由其自动生成，
+#    检查是否已包含本文件的规则即可。

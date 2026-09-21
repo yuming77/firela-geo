@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "firela-bot",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web, Cloudflare Workers",
+  "description": "Self-hostable AI financial advisor for the FIREla ecosystem: BillClaw billing import (Plaid, Gmail, GoCardless), FIRE planning, and Beancount/Ledger/CSV export. Deploys to Cloudflare Workers free tier.",
+  "softwareVersion": "latest",
+  "author": {
+    "@type": "Organization",
+    "name": "FIREla",
+    "url": "https://firela.io"
+  },
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "url": "https://github.com/fire-la/firela-bot",
+  "downloadUrl": "https://github.com/fire-la/firela-bot",
+  "codeRepository": "https://github.com/fire-la/firela-bot",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "keywords": "beancount, plaintext accounting, FIRE, self-hosted, privacy, personal finance, open source"
+}

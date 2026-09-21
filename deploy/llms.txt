@@ -1,0 +1,27 @@
+# FIREla
+
+> Open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance:
+> multi-region bank statement parsing and on-device PII sanitization.
+> Data sovereignty isn't a feature — it's a foundation.
+
+- [Website](https://firela.io): Product overview and updates
+- [Docs](https://docs.firela.io): Guides, FAQ, and technical reference
+- [GitHub (fire-la)](https://github.com/fire-la): Source code for the whole ecosystem
+
+## Products
+
+- [firela-bot](https://github.com/fire-la/firela-bot): Self-hostable AI financial advisor with BillClaw billing import (Plaid, Gmail, GoCardless). Deploys to Cloudflare Workers free tier. Exports Beancount, Ledger, CSV.
+- [firela-app](https://github.com/fire-la/firela-app): Flutter mobile client with 10 registered bank statement parsers (Alipay ×3, WeChat Pay, CCB, CMBC, Degiro, HSBC HK ×2) and an on-device PII sanitizer (11 detection types across CN/HK/EU/US + universal). In active development.
+- [firela-vlt](https://firela.io): Beancount ledger store. In development.
+- [firela-relay](https://firela.io): Open banking relay — you hold the access tokens. In development.
+
+## FAQ
+
+- [FAQ index](https://docs.firela.io/faq): The 12 most common questions about FIREla, licensing, data handling, and bank support.
+- [How does FIREla handle my personal data?](https://docs.firela.io/faq#data): On-device PII sanitization across CN/HK/EU/US before any data reaches a server.
+- [Which banks are supported?](https://docs.firela.io/faq#banks): 10 registered parsers across CN/EU/HK, with more in development.
+
+## Optional
+
+- [GitHub organization](https://github.com/fire-la): Every line is AGPL-3.0 and auditable.
+- [Brand kit](https://firela.io/brand): Facts, palette, and platform bios.

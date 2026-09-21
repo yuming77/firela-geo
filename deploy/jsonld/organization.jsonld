@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FIREla",
+  "alternateName": "FIREla Project",
+  "url": "https://firela.io",
+  "description": "Open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance: multi-region bank statement parsing and on-device PII sanitization.",
+  "slogan": "Data sovereignty isn't a feature — it's a foundation.",
+  "foundingDate": "2026-02",
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "sameAs": [
+    "https://github.com/fire-la",
+    "https://github.com/fire-la/firela-app",
+    "https://github.com/fire-la/firela-bot",
+    "https://docs.firela.io"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://github.com/fire-la"
+  }
+}
