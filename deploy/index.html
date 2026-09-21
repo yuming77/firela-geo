@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIREla — Open-source Beancount ecosystem for privacy-first personal finance</title>
+<meta name="description" content="FIREla is an open-source (AGPL-3.0) Beancount ecosystem: multi-region bank statement parsing (Alipay, WeChat Pay, HSBC HK, Degiro) and on-device PII sanitization. firela-bot is self-hostable today on Cloudflare Workers.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://firela.io/">
+<link rel="llms.txt" href="/llms.txt">
+<link rel="alternate" type="text/markdown" href="/llms.txt">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FIREla",
+  "url": "https://firela.io",
+  "description": "Open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance: multi-region bank statement parsing and on-device PII sanitization.",
+  "slogan": "Data sovereignty isn't a feature — it's a foundation.",
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "sameAs": ["https://github.com/fire-la", "https://github.com/fire-la/firela-app", "https://github.com/fire-la/firela-bot"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FIREla",
+  "url": "https://firela.io",
+  "publisher": { "@type": "Organization", "name": "FIREla", "url": "https://firela.io" },
+  "inLanguage": ["en", "zh"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "firela-bot",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web, Cloudflare Workers",
+  "description": "Self-hostable AI financial advisor: BillClaw billing import (Plaid, Gmail, GoCardless), FIRE planning, Beancount/Ledger/CSV export. Deploys to Cloudflare Workers free tier.",
+  "author": { "@type": "Organization", "name": "FIREla", "url": "https://firela.io" },
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "url": "https://github.com/fire-la/firela-bot",
+  "codeRepository": "https://github.com/fire-la/firela-bot",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is FIREla?",
+      "acceptedAnswer": { "@type": "Answer", "text": "FIREla is an open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance: multi-region bank statement parsing (10 registered parsers across CN/EU/HK) and an on-device PII sanitizer (11 detection types across CN/HK/EU/US). It includes firela-bot, a self-hostable AI financial advisor, and firela-app, a Flutter mobile client in active development." } },
+    { "@type": "Question", "name": "Is FIREla free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The code is free and open source under AGPL-3.0. firela-bot self-hosts on Cloudflare Workers' free tier at no infrastructure cost. There is no paid plan." } },
+    { "@type": "Question", "name": "Which banks can FIREla parse statements from?",
+      "acceptedAnswer": { "@type": "Answer", "text": "10 registered parsers: Alipay mobile/web/Yu'ebao, WeChat Pay, CCB debit, CMBC credit (China); HSBC credit and debit (Hong Kong); Degiro (Europe). Bank of China, ICBC, Deutsche Bank, and Interactive Brokers parsers are in development." } },
+    { "@type": "Question", "name": "How does FIREla handle my personal data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The PII sanitizer detects and masks 11 types of sensitive data — Chinese ID cards, HKID, SSN, IBAN (29 European country patterns), phone numbers, emails, bank cards — on your device, before any data reaches a server. Two rule modes: regular and community." } },
+    { "@type": "Question", "name": "Is FIREla really open source?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, AGPL-3.0. Every line is public at github.com/fire-la: you can read the parser and sanitizer code, run it yourself, and verify the privacy claims." } },
+    { "@type": "Question", "name": "Do I need an account to use FIREla?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The parser and sanitizer libraries run on your device without a FIREla account. firela-bot is self-hosted on your own Cloudflare account with your own API keys — you hold the access tokens." } },
+    { "@type": "Question", "name": "How is FIREla different from Mint, YNAB, or Monarch?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Mint was shut down by Intuit in 2024; YNAB is closed-source at $109/year; Monarch is $99/year plus banking credentials. FIREla is AGPL-3.0 open source, parses statements locally, and masks personal data on device — your ledger is Beancount plain text you control." } },
+    { "@type": "Question", "name": "Can I self-host FIREla?",
+      "acceptedAnswer": { "@type": "Answer", "text": "firela-bot deploys to Cloudflare Workers' free tier with your own API keys. firela-app's parser and sanitizer are open-source Dart libraries you can run and audit yourself." } }
+  ]
+}
+</script>
+<style>
+  :root { --primary: #FF8C42; --accent: #FF7525; --deep: #D4782F; --cream: #FFF0E3; --peach: #FFF3C7; --page: #F8F6F2; --ink: #202020; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", "PingFang SC", "Noto Sans", sans-serif; color: #202020; background: var(--page); line-height: 1.65; }
+  .hero { background: linear-gradient(150deg, #FF8C42, #FF7525 55%, #D4782F); color: #fff; padding: 64px 24px 48px; }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; max-width: 900px; }
+  .hero p.lead { font-size: 18px; max-width: 860px; margin: 0 0 18px; }
+  .hero .ctas a { background: #fff; color: #D4782F; font-weight: 700; padding: 10px 18px; border-radius: 999px; text-decoration: none; margin-right: 10px; display: inline-block; }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+  h2 { color: #FF7525; font-size: 26px; border-bottom: 2px solid #FF8C42; padding-bottom: 6px; margin-top: 40px; }
+  h3 { color: #202020; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .card { background: #fff; border: 1px solid #EEE; border-radius: 12px; padding: 18px 20px; }
+  .card h3 { margin-top: 0; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+  .badge.live { background: #22C55E; color: #fff; }
+  .badge.dev { background: #FFB27A; color: #202020; }
+  ul.links { padding-left: 18px; }
+  footer { border-top: 1px solid #E5E5E5; margin-top: 40px; padding: 24px; color: #666; font-size: 14px; text-align: center; }
+  details { background: #fff; border: 1px solid #EEE; border-radius: 10px; padding: 12px 18px; margin: 10px 0; }
+  summary { font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>FIREla — the open-source Beancount ecosystem for privacy-first personal finance</h1>
+  <p class="lead">Parse bank statements from Alipay, WeChat Pay, HSBC Hong Kong and Degiro on your device; mask 11 types of personal data before anything leaves your phone; keep your ledger in Beancount plain text. AGPL-3.0 — every claim on this page is auditable in the code.</p>
+  <p class="ctas">
+    <a href="https://github.com/fire-la/firela-bot">Self-host firela-bot</a>
+    <a href="https://github.com/fire-la/firela-app">firela-app (in development)</a>
+    <a href="https://docs.firela.io/faq">FAQ</a>
+  </p>
+</div>
+
+<main>
+  <h2>What is FIREla?</h2>
+  <p>FIREla is an open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance. FIRE stands for <em>Financial Independence, Retire Early</em>; “la” stands for Ledger. The ecosystem ships <strong>firela-bot</strong>, a self-hostable AI financial advisor with billing import, and <strong>firela-app</strong>, a Flutter mobile client with multi-region bank statement parsers and an on-device PII sanitizer.</p>
+  <p>Data sovereignty isn't a feature — it's a foundation. Your ledger is Beancount plain text: a universal format that outlives every app.</p>
+
+  <h2>The ecosystem</h2>
+  <div class="grid">
+    <div class="card"><h3>firela-bot <span class="badge live">self-hostable today</span></h3>
+      <p>AI financial advisor with <strong>BillClaw</strong> billing import (Plaid, Gmail, GoCardless). Deploys to Cloudflare Workers' free tier. Exports Beancount, Ledger, CSV. <a href="https://github.com/fire-la/firela-bot">github.com/fire-la/firela-bot</a></p></div>
+    <div class="card"><h3>firela-app <span class="badge dev">in development</span></h3>
+      <p>Flutter mobile client with <strong>10 registered bank statement parsers</strong> and an <strong>on-device PII sanitizer</strong> (11 detection types). Parser and sanitizer libraries are open source today. <a href="https://github.com/fire-la/firela-app">github.com/fire-la/firela-app</a></p></div>
+    <div class="card"><h3>firela-vlt &amp; firela-relay</h3>
+      <p>Beancount ledger store and an open-banking relay where <strong>you hold the access tokens</strong>. Both in development.</p></div>
+  </div>
+
+  <h2>Bank statement parsers (10 registered)</h2>
+  <ul>
+    <li><strong>China:</strong> Alipay (mobile / web / Yu'ebao), WeChat Pay, CCB debit, CMBC credit</li>
+    <li><strong>Hong Kong:</strong> HSBC credit, HSBC debit</li>
+    <li><strong>Europe:</strong> Degiro</li>
+  </ul>
+  <p>In development: Bank of China, ICBC, Deutsche Bank, Interactive Brokers.</p>
+
+  <h2>On-device PII sanitizer (11 detection types)</h2>
+  <p>Every statement is scanned and masked <strong>on your device</strong> before any data reaches a server:</p>
+  <ul>
+    <li><strong>CN:</strong> ID card, mobile phone, passport, bank card</li>
+    <li><strong>HK:</strong> HKID, HK phone · <strong>US:</strong> SSN, US phone</li>
+    <li><strong>EU:</strong> IBAN with checksum validation (29 European country patterns)</li>
+    <li><strong>Universal:</strong> email addresses, credit card numbers</li>
+  </ul>
+  <p>Two rule modes: <code>regular</code> masks personal identifiers; <code>community</code> masks everything for safe public sharing.</p>
+
+  <h2>Frequently asked questions</h2>
+  <details><summary>Is FIREla free?</summary><p>The code is free and open source under AGPL-3.0. firela-bot self-hosts on Cloudflare Workers' free tier at no infrastructure cost. There is no paid plan.</p></details>
+  <details><summary>Is FIREla really open source?</summary><p>Yes — AGPL-3.0. You can read the parser and sanitizer code, run it yourself, and verify every privacy claim on this page.</p></details>
+  <details><summary>Do I need an account?</summary><p>The parser and sanitizer libraries run on your device without a FIREla account. firela-bot is self-hosted on your own Cloudflare account with your own API keys.</p></details>
+  <details><summary>How is FIREla different from Mint, YNAB, or Monarch?</summary><p>Mint was shut down by Intuit in 2024; YNAB is closed-source at $109/year; Monarch is $99/year plus your banking credentials. FIREla gives you an open format you control instead of a subscription over your credentials.</p></details>
+
+  <h2>Links</h2>
+  <ul class="links">
+    <li>Website: <a href="https://firela.io">firela.io</a></li>
+    <li>Documentation: <a href="https://docs.firela.io">docs.firela.io</a></li>
+    <li>GitHub organization: <a href="https://github.com/fire-la">github.com/fire-la</a></li>
+    <li>AI-crawler content map: <a href="https://firela.io/llms.txt">firela.io/llms.txt</a></li>
+  </ul>
+</main>
+
+<footer>FIREla · AGPL-3.0 · This page is fully static — no JavaScript required to read it.</footer>
+</body>
+</html>
