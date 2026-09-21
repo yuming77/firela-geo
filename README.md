@@ -69,6 +69,14 @@ tools/       → open-source monitoring setup (geo-aeo-tracker)
 | [GEO-optim/GEO](https://github.com/GEO-optim/GEO) | MIT | Princeton GEO-bench (evidence base) |
 | schema.org JSON-LD | n/a | FAQPage / Organization / SoftwareApplication |
 
+## Iteration loop（GEO 周运营循环）
+
+GEO is a **weekly loop**, not a one-off: measure (50 prompts × 4 engines via
+[tracking/measurement-worksheet.html](tracking/measurement-worksheet.html)) →
+gap analysis (2-week-missed prompts → inspect who the engine cites instead) →
+content tasks (docs / Medium / Reddit) → KPI into the weekly Feishu report.
+SOP: [strategy/weekly-ops-loop.md](strategy/weekly-ops-loop.md) · 时间盒 2-3h/周。
+
 ## Strategy documents
 
 - [strategy/geo-90day-roadmap.md](strategy/geo-90day-roadmap.md) — 90-day
