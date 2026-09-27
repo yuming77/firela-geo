@@ -1,27 +1,21 @@
-# FIREla
+# Firela
 
-> Open-source (AGPL-3.0) Beancount ecosystem for privacy-first personal finance:
-> multi-region bank statement parsing and on-device PII sanitization.
-> Data sovereignty isn't a feature — it's a foundation.
+> Open-source (AGPL-3.0) beancount ecosystem for privacy-first personal finance.
+> A beancount lifetime ledger — plain text, zero tracking. Your financial data never leaves your hand.
 
-FIREla combines FIRE (Financial Independence, Retire Early) with Ledger. The
-ecosystem includes a self-hostable AI financial advisor (firela-bot) and a
-Flutter mobile client (firela-app) with 10 registered bank statement parsers
-and an on-device PII sanitizer (11 detection types across CN/HK/EU/US).
+Firela's statement parsers span CN/HK/EU via a community contribution pipeline,
+executed on-device as WebAssembly. The on-device PII sanitizer detects 11 types
+of sensitive data and validates IBAN across 62 country formats. billclaw, the
+collection module, is self-hostable today on Cloudflare's free tier.
 
 ## Products
 
-- [firela-bot](https://github.com/fire-la/firela-bot): self-hostable AI financial advisor with BillClaw billing import (Plaid, Gmail, GoCardless). Deploys to Cloudflare Workers free tier. Exports Beancount, Ledger, CSV.
-- [firela-app](https://github.com/fire-la/firela-app): Flutter mobile client with multi-region bank statement parsers and on-device PII sanitizer. In active development.
-- [firela-vlt](https://firela.io) and [firela-relay](https://firela.io): Beancount ledger store and open-banking relay (in development).
+- [billclaw](https://github.com/fire-la/firela-bot): self-hostable collection module + pa advisor shell. Deploys to Cloudflare Workers free tier. Exports Beancount, Ledger, CSV.
+- [firela-app](https://github.com/fire-la/firela-app): Flutter mobile client for a beancount lifetime ledger. In active development.
 
-## FAQ
+## Resources
 
-- [FAQ index](https://docs.firela.io/faq): the 12 most common questions about FIREla, licensing, data handling, and bank support.
-- [How does FIREla handle my personal data?](https://docs.firela.io/faq#data): on-device PII sanitization across CN/HK/EU/US before any data reaches a server.
-
-## Organization
-
-- [GitHub organization](https://github.com/fire-la): every line is AGPL-3.0 and auditable.
 - [Website](https://firela.io)
 - [Docs](https://docs.firela.io)
+- [GitHub organization](https://github.com/fire-la)
+- [FAQ](https://docs.firela.io/faq)
