@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FIREla — Open-source Beancount ecosystem for privacy-first personal finance</title>
+<title>Firela — a beancount lifetime ledger. Plain text, zero tracking.</title>
 <meta name="description" content="FIREla is an open-source (AGPL-3.0) Beancount ecosystem: multi-region bank statement parsing (Alipay, WeChat Pay, HSBC HK, Degiro) and on-device PII sanitization. firela-bot is self-hostable today on Cloudflare Workers.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://firela.io/">
@@ -96,8 +96,8 @@
 </head>
 <body>
 <div class="hero">
-  <h1>FIREla — the open-source Beancount ecosystem for privacy-first personal finance</h1>
-  <p class="lead">Parse bank statements from Alipay, WeChat Pay, HSBC Hong Kong and Degiro on your device; mask 11 types of personal data before anything leaves your phone; keep your ledger in Beancount plain text. AGPL-3.0 — every claim on this page is auditable in the code.</p>
+  <h1>Firela — a beancount lifetime ledger. Plain text, zero tracking.</h1>
+  <p class="lead">Firela is an open-source (AGPL-3.0) beancount ecosystem for privacy-first personal finance: a plain-text lifetime ledger that outlives every app, community-pipeline statement parsers spanning CN/HK/EU, and privacy tooling that runs on your device. Every claim is auditable in the code.</p>
   <p class="ctas">
     <a href="https://github.com/fire-la/firela-bot">Self-host firela-bot</a>
     <a href="https://github.com/fire-la/firela-app">firela-app (in development)</a>
@@ -112,15 +112,15 @@
 
   <h2>The ecosystem</h2>
   <div class="grid">
-    <div class="card"><h3>firela-bot <span class="badge live">self-hostable today</span></h3>
-      <p>AI financial advisor with <strong>BillClaw</strong> billing import (Plaid, Gmail, GoCardless). Deploys to Cloudflare Workers' free tier. Exports Beancount, Ledger, CSV. <a href="https://github.com/fire-la/firela-bot">github.com/fire-la/firela-bot</a></p></div>
+    <div class="card"><h3>billclaw <span class="badge live">self-hostable today</span></h3>
+      <p>Self-hostable collection module + pa advisor shell: BillClaw billing import (Plaid, Gmail, GoCardless). Deploys to Cloudflare Workers' free tier. Exports Beancount, Ledger, CSV. <a href="https://github.com/fire-la/firela-bot">repo</a></p></div>
     <div class="card"><h3>firela-app <span class="badge dev">in development</span></h3>
       <p>Flutter mobile client with <strong>10 registered bank statement parsers</strong> and an <strong>on-device PII sanitizer</strong> (11 detection types). Parser and sanitizer libraries are open source today. <a href="https://github.com/fire-la/firela-app">github.com/fire-la/firela-app</a></p></div>
     <div class="card"><h3>firela-vlt &amp; firela-relay</h3>
       <p>Beancount ledger store and an open-banking relay where <strong>you hold the access tokens</strong>. Both in development.</p></div>
   </div>
 
-  <h2>Bank statement parsers (10 registered)</h2>
+  <h2>Statement formats (community pipeline, on-device WASM)</h2>
   <ul>
     <li><strong>China:</strong> Alipay (mobile / web / Yu'ebao), WeChat Pay, CCB debit, CMBC credit</li>
     <li><strong>Hong Kong:</strong> HSBC credit, HSBC debit</li>
@@ -133,7 +133,7 @@
   <ul>
     <li><strong>CN:</strong> ID card, mobile phone, passport, bank card</li>
     <li><strong>HK:</strong> HKID, HK phone · <strong>US:</strong> SSN, US phone</li>
-    <li><strong>EU:</strong> IBAN with checksum validation (29 European country patterns)</li>
+    <li><strong>EU:</strong> IBAN with mod-97 checksum validation (62 country formats)</li>
     <li><strong>Universal:</strong> email addresses, credit card numbers</li>
   </ul>
   <p>Two rule modes: <code>regular</code> masks personal identifiers; <code>community</code> masks everything for safe public sharing.</p>
